@@ -8,8 +8,10 @@ from src.config import config
 
 DATABASE_URL = f"postgresql+asyncpg://{config.db.USER}:{config.db.PASSWORD}@{config.db.HOST}:{config.db.PORT}/{config.db.NAME}"
 
+metadata = MetaData()
+
 class Base(DeclarativeBase):
-    pass
+    metadata = metadata
 
 
 engine = create_async_engine(DATABASE_URL)
