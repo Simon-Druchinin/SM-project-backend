@@ -17,6 +17,7 @@ class DBConfig:
 class Config:
     db: DBConfig
 
+SECRET_AUTH=os.environ.get('SECRET_AUTH')
 
 config = Config(
     db=DBConfig(
