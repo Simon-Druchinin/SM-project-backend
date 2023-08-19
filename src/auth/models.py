@@ -7,8 +7,11 @@ from sqlalchemy.orm import Mapped, mapped_column
 from src.database import Base
 
 
+metadata = MetaData()
+
 class Role(Base):
     __tablename__ = 'auth_roles'
+    metadata = metadata
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String(length=255))
@@ -16,6 +19,7 @@ class Role(Base):
 
 class User(SQLAlchemyBaseUserTable[int], Base):
     __tablename__ = 'auth_users'
+    metadata = metadata
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     email: Mapped[str] = mapped_column(
