@@ -3,6 +3,8 @@ from fastapi import FastAPI
 from src.auth.config import auth_backend, fastapi_users
 from src.auth.schemas import UserRead, UserCreate
 
+from src.menu.router import router as menu_router
+
 app = FastAPI(
     title="My app"
 )
@@ -18,3 +20,5 @@ app.include_router(
     prefix="/auth",
     tags=["auth"],
 )
+
+app.include_router(menu_router)
