@@ -18,7 +18,7 @@ async def get_header_menu(session: AsyncSession = Depends(get_async_session)) ->
     return result.all()
 
 @router.post("/")
-async def get_header_menu(new_header_menu: HeaderMenuReadCreateSchema, session: AsyncSession = Depends(get_async_session)):
+async def add_header_menu(new_header_menu: HeaderMenuReadCreateSchema, session: AsyncSession = Depends(get_async_session)):
     statement = insert(HeaderMenu).values(**new_header_menu.model_dump())
     await session.execute(statement)
     await session.commit()
