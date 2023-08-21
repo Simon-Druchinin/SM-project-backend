@@ -10,4 +10,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-RUN chmod a+x docker_scripts/*.sh
+RUN chmod a+x docker/*.sh
