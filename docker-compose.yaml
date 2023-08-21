@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  db:
+    container_name: pg_db
+    environment:
+      - POSTGRES_USER=simon
+      - POSTGRES_PASSWORD=doos16xot
+      - POSTGRES_DB=sm_blog_db
+    image: postgres:15.4-bookworm
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=semastar00@mail.ru
+      - PGADMIN_DEFAULT_PASSWORD=doos16xot
+    ports:
+      - "5050:80"
