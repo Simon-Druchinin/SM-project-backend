@@ -1,9 +1,9 @@
 from typing import Optional
 from fastapi_users import schemas
-from pydantic import EmailStr
+from pydantic import EmailStr, BaseModel
 
 
-class UserRead(schemas.BaseUser[int]):
+class UserReadSchema(schemas.BaseUser[int]):
     id: int
     email: EmailStr
     username: str
@@ -12,7 +12,12 @@ class UserRead(schemas.BaseUser[int]):
     is_superuser: bool = False
     is_verified: bool = False
 
-class UserCreate(schemas.BaseUserCreate):
+class UserGeneralReadSchema(BaseModel):
+    id: int
+    email: EmailStr
+    username: str
+
+class UserCreateSchema(schemas.BaseUserCreate):
     username: str
     email: EmailStr
     password: str

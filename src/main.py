@@ -7,10 +7,11 @@ from fastapi_cache.decorator import cache
 from redis import asyncio as aioredis
 
 from src.auth.config import auth_backend, fastapi_users
-from src.auth.schemas import UserRead, UserCreate
+from src.auth.schemas import UserReadSchema, UserCreateSchema
 
 from src.menu.router import router as menu_router
 from src.tasks.router import router as tasks_router
+from src.posts.router import router as posts_router
 
 from src.config import config
 
@@ -25,13 +26,14 @@ app.include_router(
 )
 
 app.include_router(
-    fastapi_users.get_register_router(UserRead, UserCreate),
+    fastapi_users.get_register_router(UserReadSchema, UserCreateSchema),
     prefix="/auth",
     tags=["auth"],
 )
 
 app.include_router(menu_router)
 app.include_router(tasks_router)
+app.include_router(posts_router)
 
 @app.on_event("startup")
 async def startup_event():

@@ -20,7 +20,7 @@ class Post(Base, Statistics):
     title: str = Column(String(255), nullable=False)
     created_at: datetime = Column(TIMESTAMP, default=datetime.utcnow)
     
-    author = relationship(User, back_populates="posts")
+    author = relationship("User", back_populates="posts")
 
 class Comment(Base, Statistics):
     __tablename__ = 'posts_comments'
@@ -29,4 +29,4 @@ class Comment(Base, Statistics):
     author_id: str = Column(Integer, ForeignKey(User.id, ondelete="CASCADE"), nullable=False)
     created_at: datetime = Column(TIMESTAMP, default=datetime.utcnow)
     
-    author = relationship(User, back_populates="comments")
+    author = relationship("User", back_populates="comments")
