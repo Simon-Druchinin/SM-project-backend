@@ -30,3 +30,6 @@ class Comment(Base, Statistics):
     created_at: datetime = Column(TIMESTAMP, default=datetime.utcnow)
     
     author = relationship("User", back_populates="comments")
+
+posts = Post.__table__
+comments = Comment.__table__

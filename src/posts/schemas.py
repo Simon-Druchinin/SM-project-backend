@@ -12,3 +12,8 @@ class PostReadSchema(BaseModel):
     views: int
     likes: int
     author: UserGeneralReadSchema
+
+class PostCreateSchema(BaseModel):
+    title: str
+    text: str
+    author_id: int
